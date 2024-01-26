@@ -11,6 +11,10 @@ const links = [
     href: '/journal',
     label: 'Journal',
   },
+  {
+    href: '/history',
+    label: 'History',
+  },
 ]
 
 export default function DashboardLayout({ children }: PropsWithChildren) {

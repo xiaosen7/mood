@@ -8,7 +8,7 @@ const handleRes = async (res: Response) => {
     return data.data
   }
 
-  return { error: true, res }
+  throw res
 }
 
 export const createNewEntry = async () => {
@@ -26,6 +26,17 @@ export const updateEntry = async (id: string, content: string) => {
     new Request(createURL(`/api/journal/${id}`), {
       method: 'PATCH',
       body: JSON.stringify({ content }),
+    })
+  )
+
+  return handleRes(res)
+}
+
+export const askQuestion = async (question: string) => {
+  const res = await fetch(
+    new Request(createURL(`/api/question`), {
+      method: 'POST',
+      body: JSON.stringify({ question }),
     })
   )
 
